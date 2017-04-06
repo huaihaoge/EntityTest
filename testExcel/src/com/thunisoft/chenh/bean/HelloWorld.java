@@ -1,4 +1,4 @@
-package com.chenh.bean;
+package com.thunisoft.chenh.bean;
 
 public class HelloWorld {
 
