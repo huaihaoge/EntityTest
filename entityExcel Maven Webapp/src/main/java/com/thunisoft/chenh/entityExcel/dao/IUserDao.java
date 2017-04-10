@@ -1,8 +1,11 @@
 package com.thunisoft.chenh.entityExcel.dao;
 
+import org.springframework.stereotype.Component;
+
 import com.thunisoft.chenh.entityExcel.pojo.User;
 
-public interface UserMapper {
+@Component("userDao")
+public interface IUserDao {
     int deleteByPrimaryKey(Integer id);
 
     int insert(User record);
