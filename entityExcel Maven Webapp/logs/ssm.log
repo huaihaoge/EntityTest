@@ -282,3 +282,9 @@ Caused by: java.io.FileNotFoundException: class path resource [jdbc.properties] 
 [INFO] [2017-04-08 17:22:28][org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor]JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
 [INFO] [2017-04-08 17:22:29][org.ch.testmybatis.TestMyBatis]{"age":20,"id":1,"password":"123","userName":"chenh"}
 [INFO] [2017-04-08 17:22:29][org.springframework.context.support.GenericApplicationContext]Closing org.springframework.context.support.GenericApplicationContext@75d8ac9d: startup date [Sat Apr 08 17:22:28 CST 2017]; root of context hierarchy
+[INFO] [2017-04-10 13:56:05][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-mybatis.xml]
+[INFO] [2017-04-10 13:56:05][org.springframework.context.support.GenericApplicationContext]Refreshing org.springframework.context.support.GenericApplicationContext@15ea6975: startup date [Mon Apr 10 13:56:05 CST 2017]; root of context hierarchy
+[INFO] [2017-04-10 13:56:05][org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]Loading properties file from class path resource [conn.properties]
+[INFO] [2017-04-10 13:56:05][org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor]JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+[INFO] [2017-04-10 13:56:06][org.ch.testmybatis.TestMyBatis]{"age":20,"id":1,"password":"123","userName":"chenh"}
+[INFO] [2017-04-10 13:56:06][org.springframework.context.support.GenericApplicationContext]Closing org.springframework.context.support.GenericApplicationContext@15ea6975: startup date [Mon Apr 10 13:56:05 CST 2017]; root of context hierarchy
