@@ -20,7 +20,7 @@ public class UserController {
 
     @RequestMapping("/showUser")
     public String toIndex(HttpServletRequest request, Model model) {
-        int userID = Integer.parseInt(request.getParameter("id"));
+        int userID = Integer.parseInt(request.getParameter("id") );
         User user = this.userService.getUserById(userID);
         model.addAttribute("user", user);
         return "showUser";
