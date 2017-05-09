@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.thunisoft.chenh.entityExcel.dao.IConfInfoDao">
+  <resultMap id="BaseResultMap" type="com.thunisoft.chenh.entityExcel.pojo.ConfInfo">
+    <id column="n_id" jdbcType="INTEGER" property="nId" />
+    <result column="c_name" jdbcType="VARCHAR" property="cName" />
+    <result column="c_notes" jdbcType="VARCHAR" property="cNotes" />
+    <result column="d_time" jdbcType="DATE" property="dTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    n_id, c_name, c_notes, d_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from db_entitytest.t_conf_info
+    where n_id = #{nId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from db_entitytest.t_conf_info
+    where n_id = #{nId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.thunisoft.chenh.entityExcel.pojo.ConfInfo">
+    insert into db_entitytest.t_conf_info (n_id, c_name, c_notes, 
+      d_time)
+    values (#{nId,jdbcType=INTEGER}, #{cName,jdbcType=VARCHAR}, #{cNotes,jdbcType=VARCHAR}, 
+      #{dTime,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.thunisoft.chenh.entityExcel.pojo.ConfInfo">
+    insert into db_entitytest.t_conf_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="nId != null">
+        n_id,
+      </if>
+      <if test="cName != null">
+        c_name,
+      </if>
+      <if test="cNotes != null">
+        c_notes,
+      </if>
+      <if test="dTime != null">
+        d_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="nId != null">
+        #{nId,jdbcType=INTEGER},
+      </if>
+      <if test="cName != null">
+        #{cName,jdbcType=VARCHAR},
+      </if>
+      <if test="cNotes != null">
+        #{cNotes,jdbcType=VARCHAR},
+      </if>
+      <if test="dTime != null">
+        #{dTime,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.thunisoft.chenh.entityExcel.pojo.ConfInfo">
+    update db_entitytest.t_conf_info
+    <set>
+      <if test="cName != null">
+        c_name = #{cName,jdbcType=VARCHAR},
+      </if>
+      <if test="cNotes != null">
+        c_notes = #{cNotes,jdbcType=VARCHAR},
+      </if>
+      <if test="dTime != null">
+        d_time = #{dTime,jdbcType=DATE},
+      </if>
+    </set>
+    where n_id = #{nId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.thunisoft.chenh.entityExcel.pojo.ConfInfo">
+    update db_entitytest.t_conf_info
+    set c_name = #{cName,jdbcType=VARCHAR},
+      c_notes = #{cNotes,jdbcType=VARCHAR},
+      d_time = #{dTime,jdbcType=DATE}
+    where n_id = #{nId,jdbcType=INTEGER}
+  </update>
+</mapper>

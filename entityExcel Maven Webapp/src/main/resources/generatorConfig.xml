@@ -8,8 +8,8 @@
 		location="F:\Profile\maven\repository\org\postgresql\postgresql\9.4.1208.jre7\postgresql-9.4.1208.jre7.jar" />
 
 	<context id="DB2Tables" targetRuntime="MyBatis3">
-		<commentGenerator type="org.mybatis.generator.internal.HairyCommentGenerator">
-			<property name="javaFileEncoding" value="UTF-8"/>
+		<commentGenerator >
+			<property name="javaFileEncoding" value="UTF-8" />
 			<property name="suppressDate" value="true" />
 			<!-- 是否去除自动生成的注释 true：是 ： false:否 -->
 			<property name="suppressAllComments" value="true" />
@@ -40,10 +40,28 @@
 		</javaClientGenerator>
 		<!-- 要生成的表 tableName是数据库中的表名或视图名 domainObjectName是实体类名 -->
 		<table schema="db_entitytest" tableName="t_db_info"
-			domainObjectName="User" enableCountByExample="false"
+			domainObjectName="DBInfo" enableCountByExample="false"
 			enableUpdateByExample="false" enableDeleteByExample="false"
 			enableSelectByExample="false" selectByExampleQueryId="false">
-			
+
+		</table>
+		<table schema="db_entitytest" tableName="t_conf_info"
+			domainObjectName="ConfInfo" enableCountByExample="false"
+			enableUpdateByExample="false" enableDeleteByExample="false"
+			enableSelectByExample="false" selectByExampleQueryId="false">
+
+		</table>
+		<table schema="db_entitytest" tableName="t_sql_info"
+			domainObjectName="SqlInfo" enableCountByExample="false"
+			enableUpdateByExample="false" enableDeleteByExample="false"
+			enableSelectByExample="false" selectByExampleQueryId="false">
+
+		</table>
+		<table schema="db_entitytest" tableName="t_testlist"
+			domainObjectName="TestList" enableCountByExample="false"
+			enableUpdateByExample="false" enableDeleteByExample="false"
+			enableSelectByExample="false" selectByExampleQueryId="false">
+
 		</table>
 	</context>
 </generatorConfiguration>  

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.thunisoft.chenh.entityExcel.dao.IDBInfoDao">
+  <resultMap id="BaseResultMap" type="com.thunisoft.chenh.entityExcel.pojo.DBInfo">
+    <id column="n_id" jdbcType="INTEGER" property="nId" />
+    <result column="n_configure_id" jdbcType="INTEGER" property="nConfigureId" />
+    <result column="n_type" jdbcType="INTEGER" property="nType" />
+    <result column="c_jdbc" jdbcType="VARCHAR" property="cJdbc" />
+    <result column="c_username" jdbcType="VARCHAR" property="cUsername" />
+    <result column="c_password" jdbcType="VARCHAR" property="cPassword" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    n_id, n_configure_id, n_type, c_jdbc, c_username, c_password
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from db_entitytest.t_db_info
+    where n_id = #{nId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from db_entitytest.t_db_info
+    where n_id = #{nId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.thunisoft.chenh.entityExcel.pojo.DBInfo">
+    insert into db_entitytest.t_db_info (n_id, n_configure_id, n_type, 
+      c_jdbc, c_username, c_password
+      )
+    values (#{nId,jdbcType=INTEGER}, #{nConfigureId,jdbcType=INTEGER}, #{nType,jdbcType=INTEGER}, 
+      #{cJdbc,jdbcType=VARCHAR}, #{cUsername,jdbcType=VARCHAR}, #{cPassword,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.thunisoft.chenh.entityExcel.pojo.DBInfo">
+    insert into db_entitytest.t_db_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="nId != null">
+        n_id,
+      </if>
+      <if test="nConfigureId != null">
+        n_configure_id,
+      </if>
+      <if test="nType != null">
+        n_type,
+      </if>
+      <if test="cJdbc != null">
+        c_jdbc,
+      </if>
+      <if test="cUsername != null">
+        c_username,
+      </if>
+      <if test="cPassword != null">
+        c_password,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="nId != null">
+        #{nId,jdbcType=INTEGER},
+      </if>
+      <if test="nConfigureId != null">
+        #{nConfigureId,jdbcType=INTEGER},
+      </if>
+      <if test="nType != null">
+        #{nType,jdbcType=INTEGER},
+      </if>
+      <if test="cJdbc != null">
+        #{cJdbc,jdbcType=VARCHAR},
+      </if>
+      <if test="cUsername != null">
+        #{cUsername,jdbcType=VARCHAR},
+      </if>
+      <if test="cPassword != null">
+        #{cPassword,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.thunisoft.chenh.entityExcel.pojo.DBInfo">
+    update db_entitytest.t_db_info
+    <set>
+      <if test="nConfigureId != null">
+        n_configure_id = #{nConfigureId,jdbcType=INTEGER},
+      </if>
+      <if test="nType != null">
+        n_type = #{nType,jdbcType=INTEGER},
+      </if>
+      <if test="cJdbc != null">
+        c_jdbc = #{cJdbc,jdbcType=VARCHAR},
+      </if>
+      <if test="cUsername != null">
+        c_username = #{cUsername,jdbcType=VARCHAR},
+      </if>
+      <if test="cPassword != null">
+        c_password = #{cPassword,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where n_id = #{nId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.thunisoft.chenh.entityExcel.pojo.DBInfo">
+    update db_entitytest.t_db_info
+    set n_configure_id = #{nConfigureId,jdbcType=INTEGER},
+      n_type = #{nType,jdbcType=INTEGER},
+      c_jdbc = #{cJdbc,jdbcType=VARCHAR},
+      c_username = #{cUsername,jdbcType=VARCHAR},
+      c_password = #{cPassword,jdbcType=VARCHAR}
+    where n_id = #{nId,jdbcType=INTEGER}
+  </update>
+</mapper>
