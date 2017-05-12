@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.thunisoft.chenh.entityExcel.dao.ICheckListDao" >
+  <resultMap id="BaseResultMap" type="com.thunisoft.chenh.entityExcel.pojo.CheckList" >
+    <id column="n_id" property="nId" jdbcType="INTEGER" />
+    <result column="c_check_item" property="cCheckItem" jdbcType="VARCHAR" />
+    <result column="n_expected_results" property="nExpectedResults" jdbcType="VARCHAR" />
+    <result column="d_last_time" property="dLastTime" jdbcType="DATE" />
+    <result column="n_actual_results" property="nActualResults" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    n_id, c_check_item, n_expected_results, d_last_time, n_actual_results
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from db_etp.t_check_list
+    where n_id = #{nId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from db_etp.t_check_list
+    where n_id = #{nId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.thunisoft.chenh.entityExcel.pojo.CheckList" >
+    insert into db_etp.t_check_list (n_id, c_check_item, n_expected_results, 
+      d_last_time, n_actual_results)
+    values (#{nId,jdbcType=INTEGER}, #{cCheckItem,jdbcType=VARCHAR}, #{nExpectedResults,jdbcType=VARCHAR}, 
+      #{dLastTime,jdbcType=DATE}, #{nActualResults,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.thunisoft.chenh.entityExcel.pojo.CheckList" >
+    insert into db_etp.t_check_list
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="nId != null" >
+        n_id,
+      </if>
+      <if test="cCheckItem != null" >
+        c_check_item,
+      </if>
+      <if test="nExpectedResults != null" >
+        n_expected_results,
+      </if>
+      <if test="dLastTime != null" >
+        d_last_time,
+      </if>
+      <if test="nActualResults != null" >
+        n_actual_results,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="nId != null" >
+        #{nId,jdbcType=INTEGER},
+      </if>
+      <if test="cCheckItem != null" >
+        #{cCheckItem,jdbcType=VARCHAR},
+      </if>
+      <if test="nExpectedResults != null" >
+        #{nExpectedResults,jdbcType=VARCHAR},
+      </if>
+      <if test="dLastTime != null" >
+        #{dLastTime,jdbcType=DATE},
+      </if>
+      <if test="nActualResults != null" >
+        #{nActualResults,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.thunisoft.chenh.entityExcel.pojo.CheckList" >
+    update db_etp.t_check_list
+    <set >
+      <if test="cCheckItem != null" >
+        c_check_item = #{cCheckItem,jdbcType=VARCHAR},
+      </if>
+      <if test="nExpectedResults != null" >
+        n_expected_results = #{nExpectedResults,jdbcType=VARCHAR},
+      </if>
+      <if test="dLastTime != null" >
+        d_last_time = #{dLastTime,jdbcType=DATE},
+      </if>
+      <if test="nActualResults != null" >
+        n_actual_results = #{nActualResults,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where n_id = #{nId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.thunisoft.chenh.entityExcel.pojo.CheckList" >
+    update db_etp.t_check_list
+    set c_check_item = #{cCheckItem,jdbcType=VARCHAR},
+      n_expected_results = #{nExpectedResults,jdbcType=VARCHAR},
+      d_last_time = #{dLastTime,jdbcType=DATE},
+      n_actual_results = #{nActualResults,jdbcType=VARCHAR}
+    where n_id = #{nId,jdbcType=INTEGER}
+  </update>
+</mapper>

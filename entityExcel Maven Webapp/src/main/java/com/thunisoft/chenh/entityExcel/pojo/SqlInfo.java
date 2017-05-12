@@ -1,5 +1,7 @@
 package com.thunisoft.chenh.entityExcel.pojo;
 
+import java.util.Date;
+
 public class SqlInfo {
     private Integer nId;
 
@@ -18,6 +20,10 @@ public class SqlInfo {
     private String cTestResult;
 
     private Integer nTestSfError;
+
+    private Date dLastExecTime;
+
+    private Integer nSfZero;
 
     public Integer getnId() {
         return nId;
@@ -89,5 +95,21 @@ public class SqlInfo {
 
     public void setnTestSfError(Integer nTestSfError) {
         this.nTestSfError = nTestSfError;
+    }
+
+    public Date getdLastExecTime() {
+        return dLastExecTime;
+    }
+
+    public void setdLastExecTime(Date dLastExecTime) {
+        this.dLastExecTime = dLastExecTime;
+    }
+
+    public Integer getnSfZero() {
+        return nSfZero;
+    }
+
+    public void setnSfZero(Integer nSfZero) {
+        this.nSfZero = nSfZero;
     }
 }

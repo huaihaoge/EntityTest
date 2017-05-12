@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.thunisoft.chenh.entityExcel.dao.IEntityInfoDao" >
+  <resultMap id="BaseResultMap" type="com.thunisoft.chenh.entityExcel.pojo.EntityInfo" >
+    <id column="n_id" property="nId" jdbcType="INTEGER" />
+    <result column="c_entity_id" property="cEntityId" jdbcType="VARCHAR" />
+    <result column="c_entity_name" property="cEntityName" jdbcType="VARCHAR" />
+    <result column="n_field_number" property="nFieldNumber" jdbcType="BIGINT" />
+    <result column="n_wrong_number" property="nWrongNumber" jdbcType="BIGINT" />
+    <result column="d_last_time" property="dLastTime" jdbcType="DATE" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    n_id, c_entity_id, c_entity_name, n_field_number, n_wrong_number, d_last_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from db_etp.t_entity_info
+    where n_id = #{nId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from db_etp.t_entity_info
+    where n_id = #{nId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.thunisoft.chenh.entityExcel.pojo.EntityInfo" >
+    insert into db_etp.t_entity_info (n_id, c_entity_id, c_entity_name, 
+      n_field_number, n_wrong_number, d_last_time
+      )
+    values (#{nId,jdbcType=INTEGER}, #{cEntityId,jdbcType=VARCHAR}, #{cEntityName,jdbcType=VARCHAR}, 
+      #{nFieldNumber,jdbcType=BIGINT}, #{nWrongNumber,jdbcType=BIGINT}, #{dLastTime,jdbcType=DATE}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.thunisoft.chenh.entityExcel.pojo.EntityInfo" >
+    insert into db_etp.t_entity_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="nId != null" >
+        n_id,
+      </if>
+      <if test="cEntityId != null" >
+        c_entity_id,
+      </if>
+      <if test="cEntityName != null" >
+        c_entity_name,
+      </if>
+      <if test="nFieldNumber != null" >
+        n_field_number,
+      </if>
+      <if test="nWrongNumber != null" >
+        n_wrong_number,
+      </if>
+      <if test="dLastTime != null" >
+        d_last_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="nId != null" >
+        #{nId,jdbcType=INTEGER},
+      </if>
+      <if test="cEntityId != null" >
+        #{cEntityId,jdbcType=VARCHAR},
+      </if>
+      <if test="cEntityName != null" >
+        #{cEntityName,jdbcType=VARCHAR},
+      </if>
+      <if test="nFieldNumber != null" >
+        #{nFieldNumber,jdbcType=BIGINT},
+      </if>
+      <if test="nWrongNumber != null" >
+        #{nWrongNumber,jdbcType=BIGINT},
+      </if>
+      <if test="dLastTime != null" >
+        #{dLastTime,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.thunisoft.chenh.entityExcel.pojo.EntityInfo" >
+    update db_etp.t_entity_info
+    <set >
+      <if test="cEntityId != null" >
+        c_entity_id = #{cEntityId,jdbcType=VARCHAR},
+      </if>
+      <if test="cEntityName != null" >
+        c_entity_name = #{cEntityName,jdbcType=VARCHAR},
+      </if>
+      <if test="nFieldNumber != null" >
+        n_field_number = #{nFieldNumber,jdbcType=BIGINT},
+      </if>
+      <if test="nWrongNumber != null" >
+        n_wrong_number = #{nWrongNumber,jdbcType=BIGINT},
+      </if>
+      <if test="dLastTime != null" >
+        d_last_time = #{dLastTime,jdbcType=DATE},
+      </if>
+    </set>
+    where n_id = #{nId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.thunisoft.chenh.entityExcel.pojo.EntityInfo" >
+    update db_etp.t_entity_info
+    set c_entity_id = #{cEntityId,jdbcType=VARCHAR},
+      c_entity_name = #{cEntityName,jdbcType=VARCHAR},
+      n_field_number = #{nFieldNumber,jdbcType=BIGINT},
+      n_wrong_number = #{nWrongNumber,jdbcType=BIGINT},
+      d_last_time = #{dLastTime,jdbcType=DATE}
+    where n_id = #{nId,jdbcType=INTEGER}
+  </update>
+</mapper>

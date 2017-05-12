@@ -1,134 +1,154 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.thunisoft.chenh.entityExcel.dao.ISqlInfoDao">
-  <resultMap id="BaseResultMap" type="com.thunisoft.chenh.entityExcel.pojo.SqlInfo">
-    <id column="n_id" jdbcType="INTEGER" property="nId" />
-    <result column="c_entity_id" jdbcType="VARCHAR" property="cEntityId" />
-    <result column="c_field_id" jdbcType="VARCHAR" property="cFieldId" />
-    <result column="c_entity_sql" jdbcType="VARCHAR" property="cEntitySql" />
-    <result column="c_entity_result" jdbcType="VARCHAR" property="cEntityResult" />
-    <result column="n_entity_sf_error" jdbcType="INTEGER" property="nEntitySfError" />
-    <result column="c_test_sql" jdbcType="VARCHAR" property="cTestSql" />
-    <result column="c_test_result" jdbcType="VARCHAR" property="cTestResult" />
-    <result column="n_test_sf_error" jdbcType="INTEGER" property="nTestSfError" />
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.thunisoft.chenh.entityExcel.dao.ISqlInfoDao" >
+  <resultMap id="BaseResultMap" type="com.thunisoft.chenh.entityExcel.pojo.SqlInfo" >
+    <id column="n_id" property="nId" jdbcType="INTEGER" />
+    <result column="c_entity_id" property="cEntityId" jdbcType="VARCHAR" />
+    <result column="c_field_id" property="cFieldId" jdbcType="VARCHAR" />
+    <result column="c_entity_sql" property="cEntitySql" jdbcType="VARCHAR" />
+    <result column="c_entity_result" property="cEntityResult" jdbcType="VARCHAR" />
+    <result column="n_entity_sf_error" property="nEntitySfError" jdbcType="INTEGER" />
+    <result column="c_test_sql" property="cTestSql" jdbcType="VARCHAR" />
+    <result column="c_test_result" property="cTestResult" jdbcType="VARCHAR" />
+    <result column="n_test_sf_error" property="nTestSfError" jdbcType="INTEGER" />
+    <result column="d_last_exec_time" property="dLastExecTime" jdbcType="TIME" />
+    <result column="n_sf_zero" property="nSfZero" jdbcType="INTEGER" />
   </resultMap>
-  <sql id="Base_Column_List">
+  <sql id="Base_Column_List" >
     n_id, c_entity_id, c_field_id, c_entity_sql, c_entity_result, n_entity_sf_error, 
-    c_test_sql, c_test_result, n_test_sf_error
+    c_test_sql, c_test_result, n_test_sf_error, d_last_exec_time, n_sf_zero
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
-    from db_entitytest.t_sql_info
+    from db_etp.t_sql_info
     where n_id = #{nId,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from db_entitytest.t_sql_info
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from db_etp.t_sql_info
     where n_id = #{nId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.thunisoft.chenh.entityExcel.pojo.SqlInfo">
-    insert into db_entitytest.t_sql_info (n_id, c_entity_id, c_field_id, 
+  <insert id="insert" parameterType="com.thunisoft.chenh.entityExcel.pojo.SqlInfo" >
+    insert into db_etp.t_sql_info (n_id, c_entity_id, c_field_id, 
       c_entity_sql, c_entity_result, n_entity_sf_error, 
-      c_test_sql, c_test_result, n_test_sf_error
-      )
+      c_test_sql, c_test_result, n_test_sf_error, 
+      d_last_exec_time, n_sf_zero)
     values (#{nId,jdbcType=INTEGER}, #{cEntityId,jdbcType=VARCHAR}, #{cFieldId,jdbcType=VARCHAR}, 
       #{cEntitySql,jdbcType=VARCHAR}, #{cEntityResult,jdbcType=VARCHAR}, #{nEntitySfError,jdbcType=INTEGER}, 
-      #{cTestSql,jdbcType=VARCHAR}, #{cTestResult,jdbcType=VARCHAR}, #{nTestSfError,jdbcType=INTEGER}
-      )
+      #{cTestSql,jdbcType=VARCHAR}, #{cTestResult,jdbcType=VARCHAR}, #{nTestSfError,jdbcType=INTEGER}, 
+      #{dLastExecTime,jdbcType=TIME}, #{nSfZero,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.thunisoft.chenh.entityExcel.pojo.SqlInfo">
-    insert into db_entitytest.t_sql_info
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="nId != null">
+  <insert id="insertSelective" parameterType="com.thunisoft.chenh.entityExcel.pojo.SqlInfo" >
+    insert into db_etp.t_sql_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="nId != null" >
         n_id,
       </if>
-      <if test="cEntityId != null">
+      <if test="cEntityId != null" >
         c_entity_id,
       </if>
-      <if test="cFieldId != null">
+      <if test="cFieldId != null" >
         c_field_id,
       </if>
-      <if test="cEntitySql != null">
+      <if test="cEntitySql != null" >
         c_entity_sql,
       </if>
-      <if test="cEntityResult != null">
+      <if test="cEntityResult != null" >
         c_entity_result,
       </if>
-      <if test="nEntitySfError != null">
+      <if test="nEntitySfError != null" >
         n_entity_sf_error,
       </if>
-      <if test="cTestSql != null">
+      <if test="cTestSql != null" >
         c_test_sql,
       </if>
-      <if test="cTestResult != null">
+      <if test="cTestResult != null" >
         c_test_result,
       </if>
-      <if test="nTestSfError != null">
+      <if test="nTestSfError != null" >
         n_test_sf_error,
       </if>
+      <if test="dLastExecTime != null" >
+        d_last_exec_time,
+      </if>
+      <if test="nSfZero != null" >
+        n_sf_zero,
+      </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="nId != null">
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="nId != null" >
         #{nId,jdbcType=INTEGER},
       </if>
-      <if test="cEntityId != null">
+      <if test="cEntityId != null" >
         #{cEntityId,jdbcType=VARCHAR},
       </if>
-      <if test="cFieldId != null">
+      <if test="cFieldId != null" >
         #{cFieldId,jdbcType=VARCHAR},
       </if>
-      <if test="cEntitySql != null">
+      <if test="cEntitySql != null" >
         #{cEntitySql,jdbcType=VARCHAR},
       </if>
-      <if test="cEntityResult != null">
+      <if test="cEntityResult != null" >
         #{cEntityResult,jdbcType=VARCHAR},
       </if>
-      <if test="nEntitySfError != null">
+      <if test="nEntitySfError != null" >
         #{nEntitySfError,jdbcType=INTEGER},
       </if>
-      <if test="cTestSql != null">
+      <if test="cTestSql != null" >
         #{cTestSql,jdbcType=VARCHAR},
       </if>
-      <if test="cTestResult != null">
+      <if test="cTestResult != null" >
         #{cTestResult,jdbcType=VARCHAR},
       </if>
-      <if test="nTestSfError != null">
+      <if test="nTestSfError != null" >
         #{nTestSfError,jdbcType=INTEGER},
+      </if>
+      <if test="dLastExecTime != null" >
+        #{dLastExecTime,jdbcType=TIME},
+      </if>
+      <if test="nSfZero != null" >
+        #{nSfZero,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.thunisoft.chenh.entityExcel.pojo.SqlInfo">
-    update db_entitytest.t_sql_info
-    <set>
-      <if test="cEntityId != null">
+  <update id="updateByPrimaryKeySelective" parameterType="com.thunisoft.chenh.entityExcel.pojo.SqlInfo" >
+    update db_etp.t_sql_info
+    <set >
+      <if test="cEntityId != null" >
         c_entity_id = #{cEntityId,jdbcType=VARCHAR},
       </if>
-      <if test="cFieldId != null">
+      <if test="cFieldId != null" >
         c_field_id = #{cFieldId,jdbcType=VARCHAR},
       </if>
-      <if test="cEntitySql != null">
+      <if test="cEntitySql != null" >
         c_entity_sql = #{cEntitySql,jdbcType=VARCHAR},
       </if>
-      <if test="cEntityResult != null">
+      <if test="cEntityResult != null" >
         c_entity_result = #{cEntityResult,jdbcType=VARCHAR},
       </if>
-      <if test="nEntitySfError != null">
+      <if test="nEntitySfError != null" >
         n_entity_sf_error = #{nEntitySfError,jdbcType=INTEGER},
       </if>
-      <if test="cTestSql != null">
+      <if test="cTestSql != null" >
         c_test_sql = #{cTestSql,jdbcType=VARCHAR},
       </if>
-      <if test="cTestResult != null">
+      <if test="cTestResult != null" >
         c_test_result = #{cTestResult,jdbcType=VARCHAR},
       </if>
-      <if test="nTestSfError != null">
+      <if test="nTestSfError != null" >
         n_test_sf_error = #{nTestSfError,jdbcType=INTEGER},
+      </if>
+      <if test="dLastExecTime != null" >
+        d_last_exec_time = #{dLastExecTime,jdbcType=TIME},
+      </if>
+      <if test="nSfZero != null" >
+        n_sf_zero = #{nSfZero,jdbcType=INTEGER},
       </if>
     </set>
     where n_id = #{nId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.thunisoft.chenh.entityExcel.pojo.SqlInfo">
-    update db_entitytest.t_sql_info
+  <update id="updateByPrimaryKey" parameterType="com.thunisoft.chenh.entityExcel.pojo.SqlInfo" >
+    update db_etp.t_sql_info
     set c_entity_id = #{cEntityId,jdbcType=VARCHAR},
       c_field_id = #{cFieldId,jdbcType=VARCHAR},
       c_entity_sql = #{cEntitySql,jdbcType=VARCHAR},
@@ -136,7 +156,9 @@
       n_entity_sf_error = #{nEntitySfError,jdbcType=INTEGER},
       c_test_sql = #{cTestSql,jdbcType=VARCHAR},
       c_test_result = #{cTestResult,jdbcType=VARCHAR},
-      n_test_sf_error = #{nTestSfError,jdbcType=INTEGER}
+      n_test_sf_error = #{nTestSfError,jdbcType=INTEGER},
+      d_last_exec_time = #{dLastExecTime,jdbcType=TIME},
+      n_sf_zero = #{nSfZero,jdbcType=INTEGER}
     where n_id = #{nId,jdbcType=INTEGER}
   </update>
 </mapper>
