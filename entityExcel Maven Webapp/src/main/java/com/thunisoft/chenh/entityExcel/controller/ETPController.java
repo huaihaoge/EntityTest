@@ -12,10 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class ETPController {
 
 
-    @RequestMapping("/entityList")
+    @RequestMapping("/")
     public String toIndex(HttpServletRequest request, Model model) {
-
-        return "entityList";
+        return "ETP";
     }
     
 }
